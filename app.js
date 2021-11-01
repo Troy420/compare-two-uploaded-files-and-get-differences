@@ -89,12 +89,90 @@ var stooge = {
 // }
 // greet("afternoon", "susan", "bobo");
 
-function afternoon() {
-  console.log(`Good Afternoon`);
+function afternoon(name) {
+  return `Good Afternoon ${name}`;
 }
 
-function greet(name, cb) {
-  console.log(`Hello ${name}`);
-  cb();
+function greet(name, thisIsAfternoonFunction) {
+  console.log(`${thisIsAfternoonFunction(name)}, how's your day?`);
 }
 greet("bobo", afternoon);
+
+const people = [
+  { name: "bobo", age: 20, position: "developer", id: 1, salary: 200 },
+  { name: "peter", age: 25, position: "designer", id: 2, salary: 300 },
+  { name: "susy", age: 30, position: "the boss", id: 3, salary: 400 },
+  { name: "anna", age: 35, position: "another boss", id: 4, salary: 500 },
+];
+
+const ages = people.map(function (referenceOfPeopleArray) {
+  return referenceOfPeopleArray.age + 20;
+});
+
+const newPeople = people.map(function (referenceOfPeopleArray) {
+  return {
+    firstName: referenceOfPeopleArray.name.toUpperCase(),
+    oldAge:
+      referenceOfPeopleArray.age > 20
+        ? referenceOfPeopleArray.age
+        : "less than 20",
+  };
+});
+
+const names3 = people.map(function (referenceOfPeopleArray) {
+  return `<h1>${referenceOfPeopleArray.name}</h1>`;
+});
+
+console.log(names3);
+document.body.innerHTML = names3.join("");
+console.log(newPeople);
+
+// Filter - return new array
+const youngPeople = people.filter(function (person) {
+  return person.age <= 25;
+});
+
+const developers = people.filter(function (person) {
+  return person.position === "developer";
+});
+
+console.log(youngPeople);
+console.log(developers);
+
+// Find - return single instance and return first match
+const names4 = ["bob", "peter", "susy"];
+
+console.log(
+  names4.find(function (name) {
+    return name === "bob";
+  })
+);
+
+const person1 = people.find(function (person) {
+  return person.id === 3;
+});
+
+console.log(person1.name);
+
+const person2 = people.filter(function (person) {
+  return person.id === 3;
+});
+
+console.log(person2[0].name);
+
+// reduce
+// iterates, callback function
+// reduces to a single value - number, array, object
+// 1 parameter ('sum') - total of all calculations
+// 2 parameter ('currItem') - current iteration/value
+
+const total = people.reduce(function (sum, currItem) {
+  console.log(`sum ${sum}`);
+  console.log(`current money : ${currItem.salary}`);
+  return (sum += currItem.salary);
+}, 0); // initial value
+
+console.log(total);
+
+// Math
+// standard built-in objects -always available
