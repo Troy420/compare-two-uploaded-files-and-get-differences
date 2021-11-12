@@ -2,11 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Javascript Fundamentals</title>
+    <link rel="stylesheet" href="./style.css">
+    <title>Compare two uploaded files and get the differences</title>
   </head>
   <body>
-    <script src="./app.js"></script>
+    <form method="POST" enctype="multipart/form-data"> -->
+      <input type="file" id="file1" name="file1">
+      <input type="file" id="file2" name="file2">
+      <button class="check">check</button>
+
+      <div class="output-container">
+        <pre id="output1"></pre>
+        <pre id="output2"></pre>
+      </div>
+    </form>
+    
+    <script src="./compare.js"></script>
   </body>
 </html>
